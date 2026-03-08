@@ -1,12 +1,25 @@
-# Bitcoin Crypto-Database Pipeline 
 
-# Project Overview
+# Bitcoin Crypto-Database Pipeline
 
-This project is an automated ETL (Extract, Transform, Load) data pipeline that transitions from simple file storage to a managed PostgreSQL Relational Database system. The pipeline extracts live Bitcoin network data, transforms it for analysis, and loads it into a database (thus DBeaver/PostgreSQL) while ensuring data integrity.
+## Project Overview
 
-# Technical Features
+This project is an automated **ETL (Extract, Transform, Load)** data pipeline designed to transition data from simple file storage into a managed **PostgreSQL** Relational Database system. The pipeline extracts live Bitcoin network data, transforms it for analysis, and loads it into a database via DBeaver/PostgreSQL while maintaining strict data integrity.
 
-Automated Extraction: It fetches live BTC data directly from a remote CSV source and includes error handling (try/except) for network and database operations.
+## Technical Features
 
-# Data Transformation
-The transformation phase of the pipeline extracts the core metrics—time, price, volatility, and realized cap—while standardizing timestamps, cleaning missing price data, and applying logic to categorize market status as "Stable" or "High Volatility" based on a 0.05 threshold.
+* **Automated Extraction:** Fetches live BTC data directly from a remote CSV source.
+* **Resiliency:** Includes robust error handling (`try/except` blocks) to manage network interruptions and database connection issues.
+* **Database Integration:** Seamlessly maps transformed data into a relational schema.
+
+
+## Data Transformation
+
+The transformation phase focuses on distilling raw data into actionable insights. The pipeline processes the following core metrics:
+
+* **Standardization:** Timestamps are converted to a uniform format.
+* **Data Cleaning:** Handles missing price data to ensure continuity.
+* **Metric Extraction:** Isolates Time, Price, Volatility, and Realized Cap.
+* **Categorization Logic:** Applies a volatility threshold to categorize market status:
+* **Stable:** Volatility $\le 0.05$
+* **High Volatility:** Volatility $> 0.05$
+
